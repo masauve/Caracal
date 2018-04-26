@@ -1,6 +1,8 @@
 FROM  registry.access.redhat.com/rhscl/nodejs-8-rhel7
 
-RUN rpm -Uvh  https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+RUN yum install -y  https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 RUN yum install -y ffmpeg graphicsmagick git
 
