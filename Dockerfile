@@ -1,10 +1,9 @@
-# From the official nodejs image, based on Debian Jessy
-FROM node:8-alpine
+FROM  registry.access.redhat.com/rhscl/nodejs-8-rhel7
 
-# Install ffmpeg and imagemagick
-RUN apk --no-cache add ffmpeg graphicsmagick git
+RUN rpm -Uvh  https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-# Building
+RUN yum install -y ffmpeg graphicsmagick git
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
