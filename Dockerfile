@@ -1,6 +1,10 @@
 FROM  registry.access.redhat.com/rhscl/nodejs-8-rhel7
 
-RUN rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+USER root
+
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+RUN yum install -y  epel-release-latest-7.noarch.rpm
 
 RUN yum install -y ffmpeg graphicsmagick git
 
@@ -15,6 +19,8 @@ COPY . /usr/src/app
 
 # Default HTTP port
 EXPOSE 8075
+
+USER 10020
 
 # Start the server
 CMD ["node", "server.js"]
